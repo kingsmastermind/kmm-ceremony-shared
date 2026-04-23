@@ -425,6 +425,12 @@ function activateArcana() {
 function ceremonyInit(data) {
   if (!data) return;
   
+  // Set globals for buildMergePayload() access
+  window.threads = data.threads || [];
+  window.targets = data.targets || [];
+  window.aq = data.aq || [];
+  window.radarData = data.radarData || [];
+  
   // Render sections based on available data
   if (data.tabs && typeof renderHealthTabs === 'function') renderHealthTabs(data.tabs);
   if (typeof renderFutureOps === 'function') renderFutureOps(data.projects || []);
